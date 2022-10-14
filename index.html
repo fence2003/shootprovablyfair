@@ -60,7 +60,7 @@ hr {
   </table>
   <script>
   const clientSeed = "0000000000000000000202209c6ca64552092ee7ae510c86a5cab48ea73179c2";
-  
+
   function getPoint(hash, salt) {
     const nBits = 52; // number of most significant bits to use
     let seed = hash;
@@ -119,5 +119,13 @@ hr {
       
     }
   }
+
+  location.search.replace('?','').split('&').map(e=>e.split('=')).some(p=>{
+    if(p[0]==='seed'){
+      document.querySelector('#server_seed').value = p[1];
+      tryCalculate();
+      return;
+    }
+  });
   </script>
 </body>
